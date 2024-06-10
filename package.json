@@ -1,0 +1,29 @@
+{
+    "name": "setup_function_and_test_files",
+    "version": "1.0.0",
+    "description": "Script to setup function and test files for it",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "tests-esbuild": "esbuild ./testsAutoImport.js --bundle --charset=utf8 --platform=node --global-name=tests --format=esm --outfile=/tests/tests.js",
+        "import-build-run-tests": "node ./testsAutoImporter.cjs && npm run tests-esbuild && node ./runTests.js",
+        "test": "nodemon --exec npm run import-build-run-tests -e js --watch src --ignore testsAutoImport.js",
+        "test-once": "npm run import-build-run-tests -e js --watch src --ignore testsAutoImport.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/losslessring/setup_function_and_test_files.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/losslessring/setup_function_and_test_files/issues"
+    },
+    "homepage": "https://github.com/losslessring/setup_function_and_test_files#readme",
+    "dependencies": {
+        "esbuild": "^0.21.4",
+        "nodemon": "^3.1.3",
+        "ramda": "^0.30.1"
+    }
+}
